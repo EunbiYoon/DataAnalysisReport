@@ -4,6 +4,12 @@ from graph import legend2M, legend1M, legend0M,labels, values2M, values1M, value
 app = Flask(__name__)
 
 @app.route("/")
+def index():
+    return render_template('charts.html', labels=labels,
+    values2M=values2M, values1M=values1M, values0M=values0M,
+    legend2M=legend2M, legend1M=legend1M, legend0M=legend0M)
+
+@app.route("/chart", methods=['POST'])
 def chart():
     return render_template('charts.html', labels=labels,
     values2M=values2M, values1M=values1M, values0M=values0M,
